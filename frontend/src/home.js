@@ -17,7 +17,7 @@ function Home() {
  return (
     <div className="home-container">
       <h1 className="home-title">
-        {data ? data.title : "aFS"}
+        {data ? data.title : "sugi pula vasile"}
       </h1>
       <p className="home-description">
         Hai vasile violeaza acest prioect cu css
