@@ -1,11 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; 
 import './login.css';
-
-// CORECȚIE MAJORE AICI 👇
-// Importăm funcțiile din pachetul local 'firebase/auth'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-
-// Importăm auth-ul configurat de noi în fișierul anterior
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"; 
 import { auth } from './firebase'; 
 
 function Login() {
@@ -13,37 +8,43 @@ function Login() {
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleRegister = async (e) => {
-    e.preventDefault(); // Oprește refresh al paginii
+  useEffect(() => {
+    const logged = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        setEmail(user.email); 
+      } else {
+        setIsLoggedIn(false);
+      }
+    });
+    return () => logged();
+  }, []);
 
+
+  const regForm = async (e) => {
+    e.preventDefault(); 
     try {
         await createUserWithEmailAndPassword(auth, email, password);
-        alert("Cont creat cu succes! Te-ai logat automat.");
-        setIsLoggedIn(true);
+        alert("Cont creat cu succes!");
     } catch (error) {
-        if (error.code === "auth/email-already-in-use") {
-            alert("Acest email este deja folosit!");
-        } else if (error.code === "auth/weak-password") {
-            alert("Parola trebuie să aibă minim 6 caractere!");
-        } else {
-            alert("Eroare: " + error.message);
+        if (error.code === 'auth/email-already-in-use') {
+            alert("Email-ul este deja folosit!");
+            return;
         }
     }
   };
 
-  const handleLogin = async () => {
+  const logForm = async () => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
         alert("Te-ai logat cu succes!");
-        setIsLoggedIn(true);
     } catch (error) {
         alert("Email sau parolă greșită!");
-        console.error(error);
     }
   };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
+  const logoutForm = () => {
+    auth.signOut(); 
     setEmail('');
     setPassword('');
   };
@@ -54,8 +55,6 @@ function Login() {
         {!isLoggedIn ? (
             <div className="container_register">
                 <h2 style={{textAlign: 'center', marginBottom: '20px'}}>Autentificare</h2>
-                
-                {/* Folosim onSubmit la form ca să meargă și tasta Enter */}
                 <form onSubmit={(e) => e.preventDefault()}> 
                     <input 
                         type="email" 
@@ -65,7 +64,6 @@ function Login() {
                         onChange={(e) => setEmail(e.target.value)}
                         required 
                     />
-                    
                     <input 
                         type="password" 
                         className="inputs-login" 
@@ -74,23 +72,9 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                         required 
                     />
-
                     <div className="btn-box">
-                        <button 
-                            className="button-login" 
-                            id="register" 
-                            onClick={handleRegister}
-                        >
-                            Register
-                        </button>
-
-                        <button 
-                            className="button-login" 
-                            id="Login" 
-                            onClick={handleLogin}
-                        >
-                            Login
-                        </button>
+                        <button className="button-login" id="register" onClick={regForm}>Register</button>
+                        <button className="button-login" id="Login" onClick={logForm}>Login</button>
                     </div>
                 </form>
             </div>
@@ -101,14 +85,13 @@ function Login() {
                 <button 
                     className="button-login" 
                     id="logout" 
-                    onClick={handleLogout}
+                    onClick={logoutForm}
                     style={{marginTop: '20px', backgroundColor: '#d9534f'}}
                 >
                     Logout
                 </button>
             </div>
         )}
-
     </div>
   );
 }
