@@ -5,8 +5,7 @@ function Home() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    // Folosim AXIOS pentru a cere date de la serverul nostru (portul 5000)
-    axios.get('http://localhost:5000/api/home')
+    axios.get('https://qr-osfiir-backend.onrender.com/api/home')
       .then(response => {
         setData(response.data);
       })
