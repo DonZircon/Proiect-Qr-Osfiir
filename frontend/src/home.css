@@ -1,0 +1,24 @@
+.home-container {
+  background-color: #f0f2f5; 
+  min-height: 100vh;       
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  justify-content: center; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.home-title {
+  color: #2c3e50;         
+  font-size: 3rem;         
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.home-description {
+  color: #555;
+  font-size: 1.2rem;
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.6;
+}
