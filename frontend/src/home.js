@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import './home.css';
 function Home() {
   const [data, setData] = useState(null);
 
@@ -14,17 +14,14 @@ function Home() {
       });
   }, []);
 
-  return (
-    <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1>Hai vasile odata cu css ala</h1>
-      {data ? (
-        <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '20px' }}>
-            <h2>{data.title}</h2>
-            <p>{data.message}</p>
-        </div>
-      ) : (
-        <p>Se încarcă datele din backend...</p>
-      )}
+ return (
+    <div className="home-container">
+      <h1 className="home-title">
+        {data ? data.title : "Se încarcă..."}
+      </h1>
+      <p className="home-description">
+        Hai vasile violeaza acest prioect cu css
+      </p>
     </div>
   );
 }
