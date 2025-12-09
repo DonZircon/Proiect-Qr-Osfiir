@@ -16,7 +16,7 @@ function Home() {
 
   return (
     <div style={{ padding: '20px', textAlign: 'center' }}>
-      <h1>Pagina Home</h1>
+      <h1>Hai vasile odata cu css ala</h1>
       {data ? (
         <div style={{ border: '1px solid #ccc', padding: '10px', marginTop: '20px' }}>
             <h2>{data.title}</h2>
