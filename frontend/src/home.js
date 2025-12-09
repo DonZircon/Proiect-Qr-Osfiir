@@ -17,8 +17,10 @@ function Home() {
  return (
     <div className="home-container">
       <h1 className="home-title">
-        {data ? data.title : "Se încarcă..."}
       </h1>
+      <p className="home-description">
+        Hai vasile violeaza acest prioect cu css
+      </p>
       <p className="home-description">
         Hai vasile violeaza acest prioect cu css
       </p>
