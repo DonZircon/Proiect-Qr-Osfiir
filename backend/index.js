@@ -33,7 +33,13 @@ app.get('/api/home', async (req, res) => {
         status: "success"
     });
 });
-
+app.get('api/login', async (req, res) => {
+    res.json({
+        title: "Pagina de Login",
+        message: "Te rugăm să te autentifici pentru a continua.",
+        status: "success"
+    });
+});
 // Ruta pentru About Us
 app.get('/api/about', async (req, res) => {
     res.json({
