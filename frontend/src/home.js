@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // <--- 1. IMPORTĂ ASTA
 import './home.css';
+
 function Home() {
   const [data, setData] = useState(null);
+  const navigate = useNavigate(); // <--- 2. ACTIVEAZĂ NAVIGAREA
 
-  
   useEffect(() => {
     axios.get('https://qr-osfiir-backend.onrender.com/api/home')
       .then(response => {
@@ -14,6 +16,7 @@ function Home() {
         console.error("Eroare la conectarea cu backend-ul:", error);
       });
   }, []);
+
   const events = [
     {
       id: 1,
@@ -41,7 +44,7 @@ function Home() {
     }
   ];
 
- return (
+  return (
     <div className="home-wrapper">
       <div className="home-container">
         <h1 className="home-title">
@@ -51,7 +54,7 @@ function Home() {
           Te invităm să explorezi evenimentele noastre recente și să descoperi oportunitățile de implicare în comunitatea noastră.
         </p>
       
-     <div className="events-section">
+        <div className="events-section">
           <h2 className="events-heading">Evenimentele Noastre</h2>
           <div className="events-grid">
             {events.map(event => (
@@ -60,16 +63,24 @@ function Home() {
                 <div className="event-content">
                   <h3 className="event-title">{event.title}</h3>
                   <p className="event-description">{event.description}</p>
-                  <button className="event-button">{event.buttonText}</button>
+                  
+                  {/* --- AICI ERA PROBLEMA --- */}
+                  <button 
+                    className="event-button"
+                    onClick={() => navigate(event.buttonLink)} 
+                  >
+                    {event.buttonText}
+                  </button>
+                  {/* ------------------------- */}
+
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 }
-
 
 export default Home;
