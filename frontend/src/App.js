@@ -36,16 +36,13 @@ function App() {
   return (
     <Router>
       <div>
-        {/* --- MENIUL DE NAVIGARE (NAVBAR) --- */}
         <nav style={{ padding: '15px', background: '#333', textAlign: 'center' }}>
           
           <Link to="/" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>Home</Link>
           <Link to="/about" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>About Us</Link>
 
-          {/* Dacă userul este logat, arătăm Profile, Logout și eventual Admin */}
           {user ? (
             <>
-              {/* Butonul de Admin apare DOAR pentru tine */}
               {user.email === ADMIN_EMAIL && (
                 <Link to="/admindash" style={{ margin: '0 15px', color: '#ff4444', fontWeight: 'bold', textDecoration: 'none' }}>
                   ADMIN PANEL
@@ -70,23 +67,16 @@ function App() {
               </button>
             </>
           ) : (
-            // Dacă NU e logat, arătăm doar Login
             <Link to="/login" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>Login</Link>
           )}
 
         </nav>
-
-        {/* --- DEFINIREA RUTELOR (PAGINILOR) --- */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
-          
-          {/* Ruta pentru Admin */}
           <Route path="/admindash" element={<AdminDash />} />
-          
-          {/* ✅ CORECTURA IMPORTANTĂ: Am pus '/event-qr' cu litere mici */}
           <Route path="/event-qr" element={<EventQR />} />
         </Routes>
       </div>

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'; // <--- 1. IMPORTĂ ASTA
+import { useNavigate } from 'react-router-dom';
 import './home.css';
 
 function Home() {
   const [data, setData] = useState(null);
-  const navigate = useNavigate(); // <--- 2. ACTIVEAZĂ NAVIGAREA
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('https://qr-osfiir-backend.onrender.com/api/home')
@@ -64,14 +64,12 @@ function Home() {
                   <h3 className="event-title">{event.title}</h3>
                   <p className="event-description">{event.description}</p>
                   
-                  {/* --- AICI ERA PROBLEMA --- */}
                   <button 
                     className="event-button"
                     onClick={() => navigate(event.buttonLink)} 
                   >
                     {event.buttonText}
                   </button>
-                  {/* ------------------------- */}
 
                 </div>
               </div>

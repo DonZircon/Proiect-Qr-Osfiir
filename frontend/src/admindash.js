@@ -4,11 +4,8 @@ import { collection, query, orderBy, onSnapshot, doc, updateDoc } from "firebase
 
 function AdminDash() {
   const [usersList, setUsersList] = useState([]);
-
-  // 1. Aducem toți userii în timp real
   useEffect(() => {
     const q = query(collection(db, "participations"), orderBy("createdAt", "desc"));
-    
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const users = snapshot.docs.map(doc => ({
         id: doc.id,
@@ -20,22 +17,16 @@ function AdminDash() {
     return () => unsubscribe();
   }, []);
 
-  // 2. Funcția de "SCANARE" (Start)
   const handleScanStart = async (id) => {
     const userRef = doc(db, "participations", id);
     await updateDoc(userRef, {
         status: 'active',
-        startTime: new Date() // Salvăm ora exactă când a început
+        startTime: new Date()
     });
   };
-
-  // 3. Funcția de STOP
   const handleStop = async (id, startTime) => {
     const userRef = doc(db, "participations", id);
     const endTime = new Date();
-    
-    // Calculăm diferența în secunde
-    // startTime din Firebase este un Timestamp, trebuie convertit cu .toDate()
     const start = startTime.toDate(); 
     const diffSeconds = Math.floor((endTime - start) / 1000);
 
@@ -53,8 +44,7 @@ function AdminDash() {
       <div className="grid gap-4 max-w-4xl mx-auto">
         {usersList.map(user => (
           <div key={user.id} className="bg-white p-6 rounded-lg shadow-md flex justify-between items-center border-l-4 border-blue-500">
-            
-            {/* Informații User */}
+
             <div>
                 <p className="font-bold text-lg">{user.userEmail}</p>
                 <p className="text-sm text-gray-500">Status: 
@@ -67,9 +57,7 @@ function AdminDash() {
                 </p>
             </div>
 
-            {/* BUTOANELE DE ACȚIUNE */}
             <div>
-                {/* Cazul 1: Userul așteaptă scanarea */}
                 {user.status === 'pending' && (
                     <button 
                         onClick={() => handleScanStart(user.id)}
@@ -78,8 +66,6 @@ function AdminDash() {
                         SCANNEAZĂ (Start)
                     </button>
                 )}
-
-                {/* Cazul 2: Userul e activ -> Arătăm butonul STOP */}
                 {user.status === 'active' && (
                     <button 
                         onClick={() => handleStop(user.id, user.startTime)}
@@ -88,8 +74,6 @@ function AdminDash() {
                         STOP
                     </button>
                 )}
-
-                {/* Cazul 3: S-a terminat -> Arătăm timpul */}
                 {user.status === 'completed' && (
                     <div className="text-center bg-gray-100 p-2 rounded">
                         <p className="text-xs text-gray-500">Timp total</p>

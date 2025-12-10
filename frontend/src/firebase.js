@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore"; // Importul Firestore
-
+import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyBuhIweXIr-GYRx40Cy_zOMo-MXUAT1gtM",
   authDomain: "proiect-qr-osfiir.firebaseapp.com",
@@ -13,9 +12,5 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
-// Exportăm autentificarea
 export const auth = getAuth(app);
-
-// Exportăm baza de date (ASTA LIPSEA)
 export const db = getFirestore(app);
