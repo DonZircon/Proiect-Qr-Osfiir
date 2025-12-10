@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { auth } from './firebase'; 
 import './home.css';
 
 function Home() {
@@ -16,6 +17,14 @@ function Home() {
         console.error("Eroare la conectarea cu backend-ul:", error);
       });
   }, []);
+  const handleInscriere = (link, title) => {
+    if (auth.currentUser) {
+      navigate(link, { state: { eventName: title } });
+    } else {
+      alert("Trebuie să fii autentificat pentru a te înscrie la eveniment!");
+      navigate('/login');
+    }
+  };
 
   const events = [
     {
@@ -66,7 +75,7 @@ function Home() {
                   
                   <button 
                     className="event-button"
-                    onClick={() => navigate(event.buttonLink)} 
+                    onClick={() => handleInscriere(event.buttonLink, event.title)} 
                   >
                     {event.buttonText}
                   </button>
