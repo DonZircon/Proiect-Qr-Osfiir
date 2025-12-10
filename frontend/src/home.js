@@ -21,7 +21,7 @@ function Home() {
       description: "Participă la workshopul nostru de robotică și descoperă cum să construiești propriul robot!",
       image: "https://tse1.mm.bing.net/th/id/OIP.Px-XJtp-OFWJ5FpJZ4uBTAHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
       buttonText: "Înscrie-te",
-      buttonLink: "/register/1"
+      buttonLink: "/event-qr"
     },
     {
       id: 2,
@@ -29,7 +29,7 @@ function Home() {
       description: "24 de ore de programare intensă, provocări interesante și premii valoroase.",
       image: "https://tse2.mm.bing.net/th/id/OIP.3h-ofYSOedxao0E6ru9NcQHaFN?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
       buttonText: "Înscrie-te",
-      buttonLink: "/register/2"
+      buttonLink: "/event-qr"
     },
     {
       id: 3,
@@ -37,7 +37,7 @@ function Home() {
       description: "Speakeri de top din industrie vor prezenta cele mai noi tehnologii și tendințe.",
       image: "https://via.placeholder.com/400x300",
       buttonText: "Înscrie-te",
-      buttonLink: "/register/3"
+      buttonLink: "/event-qr"
     }
   ];
 
