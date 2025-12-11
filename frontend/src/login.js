@@ -39,7 +39,7 @@ function Login() {
   return (
     <div className="login-page-specific">
         <div className="container_register">
-            <h2 style={{textAlign: 'center', marginBottom: '20px'}}>Autentificare</h2>
+            <h2 style={{color: 'black', textAlign: 'center', marginBottom: '20px'}}>Autentificare</h2>
             <form onSubmit={(e) => e.preventDefault()}> 
                 <input 
                     type="email" 

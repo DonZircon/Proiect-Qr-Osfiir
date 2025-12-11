@@ -46,7 +46,6 @@ function App() {
           {/* Center - Logo */}
           <div className="navbar-center">
             <Link to="/" className="navbar-logo">
-              <span className="logo-icon">⚡</span>
               <span className="logo-text">OSFIIR</span>
             </Link>
           </div>
