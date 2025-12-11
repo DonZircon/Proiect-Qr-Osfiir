@@ -4,11 +4,9 @@ import './about.css';
 
 function About() {
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         axios.get('https://qr-osfiir-backend.onrender.com/api/about')
             .then(response => {
-                setInfo(response.data);
                 setLoading(false);
             })
             .catch(error => {
