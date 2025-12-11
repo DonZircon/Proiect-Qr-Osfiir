@@ -3,7 +3,6 @@ import axios from "axios";
 import './about.css';
 
 function About() {
-    const [info, setInfo] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
