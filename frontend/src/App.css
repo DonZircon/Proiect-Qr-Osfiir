@@ -1,3 +1,308 @@
+/* Navbar - Sticky and Split Layout */
+.App-navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.3);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+/* Left Section - Navigation Links */
+.navbar-left {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: flex-start;
+}
+
+/* Center Section - Logo */
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-icon {
+  font-size: 1.75rem;
+  filter: drop-shadow(0 0 10px #2563eb);
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+}
+
+/* Right Section - User Actions */
+.navbar-right {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+/* All Links Styling */
+.App-navbar a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.App-navbar a:hover {
+  color: #f8fafc;
+  background: rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Admin Link Special Styling */
+.admin-link {
+  color: #ef4444 !important;
+  font-weight: 700 !important;
+}
+
+.admin-link:hover {
+  color: #fca5a5 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Login Link Button Style */
+.login-link {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%) !important;
+  color: white !important;
+  font-weight: 600;
+  padding: 0.625rem 1.5rem !important;
+}
+
+.login-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%) !important;
+}
+
+/* Logout Button */
+.logout-btn {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: none;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .App-navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    gap: 0.25rem;
+  }
+
+  .App-navbar a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+  }
+}
+.footer-section.contact-section {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.footer-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.footer-heading {
+  font-size: 1.125rem;
+  color: #f8fafc;
+  margin-bottom: 0.5rem;
+
+}
+.footer-contact {
+  list-style: none;
+  font-size: 0.95rem;
+  padding: 0;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-contact li {
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+@media (max-width: 768px) {
+  .footer-section {
+    align-items: center;
+  }
+  .App-navbar {
+    flex-wrap: wrap;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    flex: auto;
+  }
+
+  .navbar-center {
+    order: -1;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .navbar-left {
+    justify-content: flex-start;
+  }
+
+  .navbar-right {
+    justify-content: flex-end;
+  }
+
+  .App-navbar a {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .logout-btn,
+  .login-link {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-heading {
+    font-size: 1rem;
+  }
+  .footer-contact li {
+    font-size: 0.875rem;
+  }
+  .App-navbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1rem;
+  }
+
+  .navbar-left,
+  .navbar-right,
+  .navbar-center {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .App-navbar a {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .logout-btn,
+  .login-link {
+    width: 100%;
+    padding: 0.625rem !important;
+  }
+
+  .logo-text {
+    font-size: 1.15rem;
+  }
+
+  .logo-icon {
+    font-size: 1.25rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .App-navbar a:hover,
+  .navbar-logo:hover {
+    transform: none;
+  }
+
+  .App-navbar a:active {
+    transform: scale(0.95);
+  }
+
+  .logout-btn:hover,
+  .login-link:hover {
+    transform: none;
+  }
+
+  .logout-btn:active,
+  .login-link:active {
+    transform: scale(0.95);
+  }
+}
+
+/* Rest of your existing App.css styles */
 .App {
   text-align: center;
 }
@@ -12,23 +317,6 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-@media (max-width: 768px) {
-  .App-navbar {
-    padding: 15px 20px;
-    gap: 15px;
-    font-size: 14px;
-  }
-}
-@media (max-width: 480px) {
-  .App-navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-    gap: 10px;
-  }
-}
-
-
 
 .App-header {
   background-color: #282c34;
@@ -52,30 +340,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-.App-navbar {
-  position: sticky;
-  top: 0;
-  left: 0;
-  display: flex;
-  gap: 7px;
-  padding: 20px 30px;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  box-sizing: border-box;
-}
-
-.App-navbar a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  white-space: nowrap;
-  padding: 10px 20px;
-}
-
-.App-navbar a:hover {
-  color: #d4d9df;
-  background-color: rgba(8, 52, 118, 0.732);
 }

@@ -2,24 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 // Importurile paginilor
-// Asigură-te că numele fișierelor tale sunt exact ca aici (litere mici/mari)
 import Home from './home';
 import About from './about';
 import Login from './login';
 import Profile from './profile';
-import AdminDash from './admindash'; // Verifică dacă fișierul e admindash.js sau AdminDash.js
-import EventQR from './EventQR';     // Verifică dacă fișierul e EventQR.js
+import AdminDash from './admindash';
+import EventQR from './EventQR';
 
 import { auth } from './firebase';
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import './App.css';
 
 function App() {
   const [user, setUser] = useState(null);
   
-  // Pune aici emailul cu care te loghezi tu ca Admin
   const ADMIN_EMAIL = "admin@gmail.com"; 
 
-  // Verificăm dacă userul e logat
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -27,7 +25,6 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // Funcția de delogare
   const handleLogout = async () => {
     await signOut(auth);
     alert("Te-ai delogat!");
@@ -36,41 +33,39 @@ function App() {
   return (
     <Router>
       <div>
-        <nav style={{ padding: '15px', background: '#333', textAlign: 'center' }}>
-          
-          <Link to="/" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>Home</Link>
-          <Link to="/about" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>About Us</Link>
+        <nav className="App-navbar">
+          {/* Left side - Navigation Links */}
+          <div className="navbar-left">
+            <Link to="/">Home</Link>
+            <Link to="/about">About Us</Link>
+            {user && user.email === ADMIN_EMAIL && (
+              <Link to="/admindash" className="admin-link">ADMIN PANEL</Link>
+            )}
+          </div>
 
-          {user ? (
-            <>
-              {user.email === ADMIN_EMAIL && (
-                <Link to="/admindash" style={{ margin: '0 15px', color: '#ff4444', fontWeight: 'bold', textDecoration: 'none' }}>
-                  ADMIN PANEL
-                </Link>
-              )}
+          {/* Center - Logo */}
+          <div className="navbar-center">
+            <Link to="/" className="navbar-logo">
+              <span className="logo-icon">⚡</span>
+              <span className="logo-text">OSFIIR</span>
+            </Link>
+          </div>
 
-              <Link to="/profile" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>Profile</Link>
-              
-              <button 
-                onClick={handleLogout}
-                style={{ 
-                  marginLeft: '15px', 
-                  background: 'red', 
-                  color: 'white', 
-                  border: 'none', 
-                  padding: '5px 10px', 
-                  cursor: 'pointer',
-                  borderRadius: '5px'
-                }}
-              >
-                Logout
-              </button>
-            </>
-          ) : (
-            <Link to="/login" style={{ margin: '0 15px', color: 'white', textDecoration: 'none' }}>Login</Link>
-          )}
-
+          {/* Right side - User Actions */}
+          <div className="navbar-right">
+            {user ? (
+              <>
+                <Link to="/profile">Profile</Link>
+                <button onClick={handleLogout} className="logout-btn">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link to="/login" className="login-link">Login</Link>
+            )}
+          </div>
         </nav>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -80,6 +75,14 @@ function App() {
           <Route path="/event-qr" element={<EventQR />} />
         </Routes>
       </div>
+      <div className="footer-section">
+              <ul className="footer-contact">
+                <li className="footer-heading">Contact</li>
+                <li>📧 contact@osfiir.ro</li>
+                <li>📞 +40 123 456 789</li>
+                <li>📍 București, România</li>
+              </ul>
+            </div>
     </Router>
   );
 }

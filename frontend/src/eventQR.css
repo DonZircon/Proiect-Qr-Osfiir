@@ -1,0 +1,231 @@
+:root {
+  --primary: #2563eb;
+  --background: #0f172a;
+  --surface: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --success: #10b981;
+}
+
+/* Main Wrapper */
+.event-qr-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--background) 0%, #1e293b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* Loading */
+.loading-container {
+  text-align: center;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Content Container */
+.event-qr-content {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Event Name */
+.event-name {
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* QR Title */
+.qr-title {
+  color: var(--text-primary);
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* QR Code Container */
+.qr-code-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  display: inline-block;
+}
+
+.qr-code-container canvas {
+  display: block;
+}
+
+/* QR ID */
+.qr-id {
+  color: var(--text-secondary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Status Text */
+.status-text {
+  color: var(--primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Status Title */
+.status-title {
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.status-title.success {
+  color: var(--success);
+}
+
+/* Status Message */
+.status-message {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Duration Box */
+.duration-box {
+  background: var(--surface);
+  padding: 2rem;
+  border-radius: 0.75rem;
+  width: 100%;
+}
+
+.duration-box p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.duration-time {
+  display: block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Home Button */
+.home-button {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.home-button:hover {
+  background: #1e40af;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .event-qr-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .event-qr-content {
+    gap: 1.25rem;
+  }
+
+  .qr-title {
+    font-size: 1.5rem;
+  }
+
+  .qr-code-container {
+    padding: 1rem;
+  }
+
+  .qr-code-container canvas {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .status-title {
+    font-size: 2rem;
+  }
+
+  .duration-time {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-qr-wrapper {
+    padding: 1rem 0.75rem;
+  }
+
+  .event-qr-content {
+    gap: 1rem;
+  }
+
+  .event-name {
+    font-size: 0.875rem;
+  }
+
+  .qr-title {
+    font-size: 1.25rem;
+  }
+
+  .qr-code-container {
+    padding: 0.75rem;
+  }
+
+  .qr-code-container canvas {
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  .qr-id {
+    font-size: 0.75rem;
+  }
+
+  .status-text {
+    font-size: 1rem;
+  }
+
+  .status-title {
+    font-size: 1.75rem;
+  }
+
+  .status-message {
+    font-size: 1rem;
+  }
+
+  .duration-box {
+    padding: 1.5rem;
+  }
+
+  .duration-time {
+    font-size: 2rem;
+  }
+
+  .home-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}

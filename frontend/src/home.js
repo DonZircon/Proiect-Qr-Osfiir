@@ -31,7 +31,7 @@ function Home() {
       id: 1,
       title: "Workshop Robotică",
       description: "Participă la workshopul nostru de robotică și descoperă cum să construiești propriul robot!",
-      image: "https://tse1.mm.bing.net/th/id/OIP.Px-XJtp-OFWJ5FpJZ4uBTAHaEK?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+      image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjTPJ3mrdxu9RQlhyPQhyQGTyGKovZjSzxUkdgwH4stjQjBasYOy_GUf0_bZI044s97AN_so79Cc85SGhdqq4kBTL_prsSzZKg3KTym7z30oHZK-gaoDFUKxIkcMx9Gxfr4DNroBkyyguY0K5NKT9wXuKrBelEB9q0jZMPepAVKX9-6h3uf4juJnKxAcjI/w640-h427/6.jpg",
       buttonText: "Înscrie-te",
       buttonLink: "/event-qr"
     },
@@ -39,7 +39,7 @@ function Home() {
       id: 2,
       title: "Hackathon 2024",
       description: "24 de ore de programare intensă, provocări interesante și premii valoroase.",
-      image: "https://tse2.mm.bing.net/th/id/OIP.3h-ofYSOedxao0E6ru9NcQHaFN?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
+      image: "https://www.industriambiente.com/media/uploads/noticias/HACKATHON_(1).jpg",
       buttonText: "Înscrie-te",
       buttonLink: "/event-qr"
     },
@@ -47,7 +47,7 @@ function Home() {
       id: 3,
       title: "Conferință Tech",
       description: "Speakeri de top din industrie vor prezenta cele mai noi tehnologii și tendințe.",
-      image: "https://via.placeholder.com/400x300",
+      image: "https://i0.wp.com/thegadgetist.ro/wp-content/uploads/2020/09/evenimente-conferinte.jpg?resize=600%2C454&ssl=1",
       buttonText: "Înscrie-te",
       buttonLink: "/event-qr"
     }
